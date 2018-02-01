@@ -3,6 +3,7 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const fs = require('fs')
 
 module.exports = {
   dev: {
@@ -20,6 +21,13 @@ module.exports = {
     errorOverlay: true,
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+
+    // INFO: To enable local https, generate server.crt and server.key files, and uncomment this block
+    // INFO: Creating a Self-Signed SSL Certificate: https://devcenter.heroku.com/articles/ssl-certificate-self
+    https: {
+      cert: fs.readFileSync(path.join(__dirname, "../build/server.crt")),
+      key: fs.readFileSync(path.join(__dirname, "../build/server.key"))
+    },
 
     {{#lint}}// Use Eslint Loader?
     // If true, your code will be linted during bundling and

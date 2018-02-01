@@ -13,18 +13,20 @@
 
 This is a project template for [vue-cli](https://github.com/vuejs/vue-cli). **It is recommended to use npm 3+ for a more efficient dependency tree.**
 
+**_Note:_** Because this template lives in VSTS, we need to include the full path to this repo when running `vue init`. Make sure to change **my-project** to your actual project name.
+
 ``` bash
 $ npm install -g vue-cli
-$ vue init webpack my-project
+$ vue init -c https://garriganlymangroup.visualstudio.com/GLG%20Development/_git/glg-vue-cli-webpack my-project
 $ cd my-project
 $ npm install
 $ npm run dev
 ```
 
-This will scaffold the project using the `master` branch. If you wish to use the latest version of the webpack template, do the following instead:
+This will scaffold the project using the `master` branch. If you wish to use the latest version of this template, do the following instead:
 
 ``` bash
-$ vue init webpack#develop my-project
+$ vue init -c https://garriganlymangroup.visualstudio.com/GLG%20Development/_git/glg-vue-cli-webpack#develop my-project
 ```
 
 :warning: **The develop branch is not considered stable and can contain bugs or not build at all, so use at your own risk.**
@@ -39,6 +41,7 @@ The development server will run on port 8080 by default. If that port is already
   - State preserving compilation error overlay
   - Lint-on-save with ESLint
   - Source maps
+  - Use **https** locally with minor tweak to **/config/index.js** - _(see line 25)_
 
 - `npm run build`: Production ready build.
   - JavaScript minified with [UglifyJS v3](https://github.com/mishoo/UglifyJS2/tree/harmony).
@@ -46,6 +49,7 @@ The development server will run on port 8080 by default. If that port is already
   - CSS across all components extracted into a single file and minified with [cssnano](https://github.com/ben-eb/cssnano).
   - Static assets compiled with version hashes for efficient long-term caching, and an auto-generated production `index.html` with proper URLs to these generated assets.
   - Use `npm run build --report`to build with bundle size analytics.
+  - Copies **web.config** to **/dist** folder
 
 - `npm run unit`: Unit tests run in [JSDOM](https://github.com/tmpvar/jsdom) with [Jest](https://facebook.github.io/jest/), or in PhantomJS with Karma + Mocha + karma-webpack.
   - Supports ES2015+ in test files.
